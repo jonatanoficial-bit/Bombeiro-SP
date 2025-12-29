@@ -3,165 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#c40000" />
   <title>Bombeiro SP</title>
 
-  <!-- FONTE -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="./icon.svg" type="image/svg+xml" />
 
-  <style>
-    :root {
-      --vermelho: #c40000;
-      --vermelho-escuro: #8b0000;
-      --preto: #0f0f0f;
-      --cinza: #1c1c1c;
-      --amarelo: #ffcc00;
-      --branco: #ffffff;
-    }
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 
-    * {
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
-    body {
-      margin: 0;
-      background: linear-gradient(180deg, #0f0f0f, #1c1c1c);
-      color: var(--branco);
-      min-height: 100vh;
-    }
-
-    header {
-      background: linear-gradient(135deg, var(--vermelho), var(--vermelho-escuro));
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,.6);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    header p {
-      margin: 6px 0 0;
-      font-size: 14px;
-      opacity: 0.9;
-    }
-
-    main {
-      padding: 20px;
-      display: grid;
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--cinza);
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.5);
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 35px rgba(196,0,0,.35);
-    }
-
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-
-    .btn {
-      width: 100%;
-      padding: 16px;
-      border-radius: 14px;
-      border: none;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      background: linear-gradient(135deg, var(--vermelho), var(--vermelho-escuro));
-      color: white;
-      box-shadow: 0 6px 18px rgba(196,0,0,.45);
-      transition: transform .12s ease, box-shadow .12s ease;
-    }
-
-    .btn:active {
-      transform: scale(0.97);
-      box-shadow: 0 4px 10px rgba(0,0,0,.6);
-    }
-
-    .btn-secondary {
-      background: #2a2a2a;
-      box-shadow: none;
-    }
-
-    .status {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-top: 6px;
-    }
-
-    .status-ok {
-      background: rgba(0,200,0,.15);
-      color: #7CFC00;
-    }
-
-    .status-alerta {
-      background: rgba(255,204,0,.2);
-      color: var(--amarelo);
-    }
-
-    footer {
-      text-align: center;
-      padding: 18px 12px;
-      font-size: 12px;
-      opacity: 0.8;
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
 
-  <header>
-    <h1>BOMBEIRO SP</h1>
-    <p>Inspeção • Prevenção • AVCB • LAVCB</p>
-  </header>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img src="./icon.svg" alt="Ícone Bombeiro SP">
+        <div class="brand-title">
+          <h1>BOMBEIRO SP</h1>
+          <p>Inspeção • Prevenção • AVCB • LAVCB</p>
+        </div>
+      </div>
 
-  <main>
-
-    <div class="card">
-      <h2>🔥 Nova Vistoria</h2>
-      <p>Inicie uma inspeção completa com checklist técnico inteligente.</p>
-      <button class="btn" onclick="alert('Próxima etapa: cadastro do local')">
-        Iniciar Vistoria
-      </button>
+      <div class="pill" id="btnInstall" style="display:none; cursor:pointer;">
+        <span class="dot"></span>
+        INSTALAR
+      </div>
     </div>
+  </div>
 
-    <div class="card">
-      <h2>📋 Vistorias Salvas</h2>
-      <p>Acesse vistorias realizadas no aparelho.</p>
-      <button class="btn btn-secondary">
-        Abrir Vistorias
-      </button>
+  <div class="container">
+
+    <section class="hero">
+      <img class="hero-cover" src="./cover.svg" alt="Capa Bombeiro SP">
+      <div class="hero-body">
+        <h2>Vistoria rápida, relatório profissional</h2>
+        <p>
+          Checklists inteligentes para comércio e eventos, com pendências, fotos e geração de PDF técnico
+          (adequações para regularização).
+        </p>
+
+        <div class="badges">
+          <div class="badge ok"><span class="b-dot"></span>SP ATIVO</div>
+          <div class="badge alerta"><span class="b-dot"></span>USO EM CAMPO</div>
+          <div class="badge"><span class="b-dot"></span>OFFLINE</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3>🔥 Nova Vistoria</h3>
+        <p>Inicie uma inspeção completa com checklist técnico guiado para comércio e eventos.</p>
+        <button class="btn" id="btnNova">Iniciar Vistoria</button>
+      </div>
+
+      <div class="card">
+        <h3>📋 Vistorias Salvas</h3>
+        <p>Acesse e continue vistorias no aparelho, mesmo sem internet.</p>
+        <button class="btn btn-secondary" id="btnSalvas">Abrir Vistorias</button>
+      </div>
+
+      <div class="card">
+        <h3>📦 Pacote Regulatório</h3>
+        <p>Estrutura preparada para atualizar regras por pacote (SP primeiro, expansão depois).</p>
+        <button class="btn btn-amber" id="btnPacote">Ver Pacote SP</button>
+      </div>
+    </section>
+
+    <div class="footer">
+      Criado por <strong>Jonatan Vale</strong> em parceria com <strong>Vale Produção</strong>
     </div>
+  </div>
 
-    <div class="card">
-      <h2>📦 Pacote Regulatório</h2>
-      <p>São Paulo • Versão inicial</p>
-      <span class="status status-ok">SP ATIVO</span>
-    </div>
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="t-dot"></span>
+    <span id="toastText">Ok</span>
+  </div>
 
-  </main>
-
-  <footer>
-    Criado por <strong>Jonatan Vale</strong> em parceria com <strong>Vale Produção</strong>
-  </footer>
-
+  <script src="./app.js"></script>
 </body>
 </html>
