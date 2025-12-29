@@ -1,5 +1,5 @@
 /* sw.js - Bombeiro SP (PWA Offline) */
-const CACHE_NAME = "bombeiro-sp-v7";
+const CACHE_NAME = "bombeiro-sp-v8";
 const ASSETS = [
   "./",
   "./index.html",
