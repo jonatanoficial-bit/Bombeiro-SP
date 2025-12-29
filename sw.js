@@ -1,5 +1,5 @@
 /* sw.js - Bombeiro SP (PWA Offline) */
-const CACHE_NAME = "bombeiro-sp-v6";
+const CACHE_NAME = "bombeiro-sp-v7";
 const ASSETS = [
   "./",
   "./index.html",
@@ -9,6 +9,7 @@ const ASSETS = [
   "./rules_engine.js",
   "./rules_sp_base.js",
   "./rules_sp_oficial.js",
+  "./sp_tables.js",
   "./manifest.json",
   "./icon.svg",
   "./cover.svg"
@@ -24,11 +25,7 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((k) => k !== CACHE_NAME)
-          .map((k) => caches.delete(k))
-      )
+      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
     )
   );
   self.clients.claim();
