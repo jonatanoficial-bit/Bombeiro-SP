@@ -17,10 +17,10 @@
 
   <link rel="stylesheet" href="./styles.css" />
 </head>
-
 <body>
 
-  <div class="topbar">
+  <!-- Topbar -->
+  <header class="topbar">
     <div class="topbar-inner">
       <a class="navbtn" href="#/home" aria-label="Ir para Home">🏠</a>
 
@@ -37,7 +37,7 @@
         INSTALAR
       </div>
     </div>
-  </div>
+  </header>
 
   <div class="container">
 
@@ -52,31 +52,18 @@
             (adequações para regularização).
           </p>
 
-          <div class="badges">
-            <div class="badge ok"><span class="b-dot"></span>SP ATIVO</div>
-            <div class="badge alerta"><span class="b-dot"></span>USO EM CAMPO</div>
-            <div class="badge"><span class="b-dot"></span>OFFLINE</div>
+          <div class="row" style="margin-top:14px;">
+            <button class="btn" id="btnNova">Nova vistoria</button>
+            <button class="btn btn-secondary" id="btnSalvas">Vistorias salvas</button>
           </div>
-        </div>
-      </section>
 
-      <section class="grid">
-        <div class="card">
-          <h3>🔥 Nova Vistoria</h3>
-          <p>Crie uma vistoria guiada (comércio ou evento) e salve offline.</p>
-          <button class="btn" id="btnNova">Iniciar Vistoria</button>
-        </div>
+          <div class="row" style="margin-top:10px;">
+            <button class="btn btn-amber" id="btnPacote">📦 Pacote SP</button>
+          </div>
 
-        <div class="card">
-          <h3>📋 Vistorias Salvas</h3>
-          <p>Abra e continue vistorias no aparelho, mesmo sem internet.</p>
-          <button class="btn btn-secondary" id="btnSalvas">Abrir Vistorias</button>
-        </div>
-
-        <div class="card">
-          <h3>📦 Pacote Regulatório</h3>
-          <p>Estrutura plugável: SP primeiro, expansão depois sem quebrar código.</p>
-          <button class="btn btn-amber" id="btnPacote">Ver Pacote SP</button>
+          <div class="note" style="margin-top:14px;">
+            <b>Importante:</b> o app gera documento de adequações para o contratante. Procedimentos oficiais seguem o CBPMESP.
+          </div>
         </div>
       </section>
 
@@ -97,17 +84,17 @@
           </div>
           <select class="select" id="tipoLocal" required>
             <option value="" selected disabled>Selecione…</option>
-            <option value="comercio">Comércio (lojas, mercados, restaurantes, etc.)</option>
-            <option value="evento">Evento (temporário: shows, feiras, etc.)</option>
+            <option value="comercio">Comércio</option>
+            <option value="evento">Evento</option>
           </select>
         </div>
 
         <div class="field">
           <div class="label">
             <span>Nome do local</span>
-            <span class="hint">Ex.: Supermercado X</span>
+            <span class="hint">Ex.: Mercado X / Festa Y</span>
           </div>
-          <input class="input" id="nomeLocal" placeholder="Digite o nome do local" required />
+          <input class="input" id="nomeLocal" placeholder="Digite o nome" required />
         </div>
 
         <div class="field">
@@ -115,14 +102,14 @@
             <span>Endereço</span>
             <span class="hint">Rua, nº, bairro, cidade</span>
           </div>
-          <textarea class="textarea" id="endereco" placeholder="Digite o endereço completo" required></textarea>
+          <input class="input" id="endereco" placeholder="Digite o endereço" required />
         </div>
 
         <div class="split">
           <div class="field">
             <div class="label">
               <span>Área (m²)</span>
-              <span class="hint">Somar áreas</span>
+              <span class="hint">Obrigatório</span>
             </div>
             <input class="input" id="area" inputmode="decimal" placeholder="Ex.: 250" required />
           </div>
@@ -130,9 +117,9 @@
           <div class="field">
             <div class="label">
               <span>Pavimentos</span>
-              <span class="hint">Ex.: 1, 2, 3…</span>
+              <span class="hint">Obrigatório</span>
             </div>
-            <input class="input" id="pavimentos" inputmode="numeric" placeholder="Ex.: 1" required />
+            <input class="input" id="pavimentos" inputmode="numeric" placeholder="Ex.: 2" required />
           </div>
         </div>
 
@@ -140,7 +127,7 @@
           <div class="field">
             <div class="label">
               <span>Altura (m)</span>
-              <span class="hint">Aproximada</span>
+              <span class="hint">Opcional</span>
             </div>
             <input class="input" id="altura" inputmode="decimal" placeholder="Ex.: 6" />
           </div>
@@ -148,7 +135,7 @@
           <div class="field">
             <div class="label">
               <span>Lotação</span>
-              <span class="hint">Estimativa</span>
+              <span class="hint">Opcional</span>
             </div>
             <input class="input" id="lotacao" inputmode="numeric" placeholder="Ex.: 120" />
           </div>
@@ -156,18 +143,16 @@
 
         <div class="field">
           <div class="label">
-            <span>Riscos e características</span>
+            <span>Riscos / Características</span>
             <span class="hint">Marque o que existir</span>
           </div>
           <div class="chips">
-            <label class="chip"><input type="checkbox" value="glp" class="risco"> GLP</label>
-            <label class="chip"><input type="checkbox" value="cozinha" class="risco"> Cozinha/óleo</label>
-            <label class="chip"><input type="checkbox" value="inflamaveis" class="risco"> Inflamáveis</label>
-            <label class="chip"><input type="checkbox" value="subsolo" class="risco"> Subsolo</label>
-            <label class="chip"><input type="checkbox" value="mezanino" class="risco"> Mezanino</label>
-            <label class="chip"><input type="checkbox" value="deposito" class="risco"> Depósito</label>
-            <label class="chip"><input type="checkbox" value="palco" class="risco"> Palco/Estrutura</label>
-            <label class="chip"><input type="checkbox" value="som_luz" class="risco"> Som/Luz (evento)</label>
+            <label class="chip"><input type="checkbox" class="risco" value="cozinha"> Cozinha</label>
+            <label class="chip"><input type="checkbox" class="risco" value="glp"> GLP</label>
+            <label class="chip"><input type="checkbox" class="risco" value="inflamaveis"> Inflamáveis</label>
+            <label class="chip"><input type="checkbox" class="risco" value="subsolo"> Subsolo</label>
+            <label class="chip"><input type="checkbox" class="risco" value="palco"> Palco/Estrutura</label>
+            <label class="chip"><input type="checkbox" class="risco" value="som_luz"> Som/Luz</label>
           </div>
         </div>
 
@@ -176,25 +161,17 @@
             <span>Observações iniciais</span>
             <span class="hint">Opcional</span>
           </div>
-          <textarea class="textarea" id="obs" placeholder="Ex.: local em reforma, rota bloqueada, etc."></textarea>
+          <textarea class="textarea" id="obs" placeholder="Observações gerais (ex.: saída única, corredor estreito, etc.)"></textarea>
         </div>
 
         <div class="row">
           <button type="button" class="btn btn-secondary" id="btnCancelarNova">Cancelar</button>
-          <button type="submit" class="btn" id="btnSalvarNova">Salvar vistoria</button>
+          <button type="submit" class="btn">Salvar e ir ao checklist</button>
         </div>
 
-        <div class="card">
-          <h3>➡️ Próximo passo</h3>
-          <p>
-            Após salvar, a próxima tela será o <strong>Checklist Inteligente</strong> (extintores, sinalização,
-            rotas, brigada, etc.).
-          </p>
-          <button type="button" class="btn btn-amber" id="btnIrChecklist" disabled>
-            Ir para Checklist (em seguida)
-          </button>
+        <div class="row" style="margin-top:10px;">
+          <button type="button" class="btn btn-amber" id="btnIrChecklist" disabled>Ir para checklist</button>
         </div>
-
       </form>
 
       <div class="footer">
@@ -216,6 +193,79 @@
       </div>
 
       <div class="list" id="listaVistorias"></div>
+
+      <div class="footer">
+        Criado por <strong>Jonatan Vale</strong> em parceria com <strong>Vale Produção</strong>
+      </div>
+    </section>
+
+    <!-- VIEW: CHECKLIST -->
+    <section class="view" id="viewChecklist">
+      <div class="page-title">Checklist</div>
+
+      <div class="card">
+        <div class="chk-head">
+          <div>
+            <h3 id="chkLocalTitle">Local</h3>
+            <p class="muted" id="chkLocalSub">—</p>
+          </div>
+          <div class="pack">
+            <span class="dot"></span>
+            <span id="packInfo">—</span>
+          </div>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi">
+            <div class="kpi-label">Progresso</div>
+            <div class="kpi-value" id="kpiProgress">0%</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Pendentes</div>
+            <div class="kpi-value" id="kpiPend">0</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Não conforme</div>
+            <div class="kpi-value" id="kpiBad">0</div>
+          </div>
+        </div>
+
+        <div class="progress">
+          <div class="progress-fill" id="progressFill" style="width:0%"></div>
+        </div>
+
+        <div class="row" style="margin-top:12px;">
+          <button class="btn btn-secondary" id="btnVoltarSalvas">Voltar</button>
+          <button class="btn btn-secondary" id="btnEditarDados">Editar dados</button>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <button class="btn" id="btnSalvarChecklist">Salvar</button>
+          <button class="btn btn-amber" id="btnGerarRelatorio">Gerar relatório</button>
+        </div>
+      </div>
+
+      <div id="chkContent"></div>
+
+      <div class="footer">
+        Criado por <strong>Jonatan Vale</strong> em parceria com <strong>Vale Produção</strong>
+      </div>
+    </section>
+
+    <!-- VIEW: RELATÓRIO -->
+    <section class="view" id="viewRelatorio">
+      <div class="page-title">Relatório</div>
+
+      <div class="card">
+        <h3>📄 Exportar PDF</h3>
+        <p>Use o botão abaixo para imprimir ou salvar como PDF.</p>
+        <div class="row">
+          <button class="btn btn-secondary" id="btnVoltarChecklist">Voltar</button>
+          <button class="btn btn-amber" id="btnPrint">Imprimir / Salvar PDF</button>
+        </div>
+      </div>
+
+      <div class="report" id="reportBox"></div>
 
       <div class="footer">
         Criado por <strong>Jonatan Vale</strong> em parceria com <strong>Vale Produção</strong>
