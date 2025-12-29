@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bombeiro SP</title>
+
+  <!-- FONTE -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --vermelho: #c40000;
+      --vermelho-escuro: #8b0000;
+      --preto: #0f0f0f;
+      --cinza: #1c1c1c;
+      --amarelo: #ffcc00;
+      --branco: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #0f0f0f, #1c1c1c);
+      color: var(--branco);
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--vermelho), var(--vermelho-escuro));
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,.6);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin: 6px 0 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    main {
+      padding: 20px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--cinza);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.5);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 35px rgba(196,0,0,.35);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 14px;
+      border: none;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--vermelho), var(--vermelho-escuro));
+      color: white;
+      box-shadow: 0 6px 18px rgba(196,0,0,.45);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+      box-shadow: 0 4px 10px rgba(0,0,0,.6);
+    }
+
+    .btn-secondary {
+      background: #2a2a2a;
+      box-shadow: none;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+
+    .status-ok {
+      background: rgba(0,200,0,.15);
+      color: #7CFC00;
+    }
+
+    .status-alerta {
+      background: rgba(255,204,0,.2);
+      color: var(--amarelo);
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px 12px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>BOMBEIRO SP</h1>
+    <p>Inspeção • Prevenção • AVCB • LAVCB</p>
+  </header>
+
+  <main>
+
+    <div class="card">
+      <h2>🔥 Nova Vistoria</h2>
+      <p>Inicie uma inspeção completa com checklist técnico inteligente.</p>
+      <button class="btn" onclick="alert('Próxima etapa: cadastro do local')">
+        Iniciar Vistoria
+      </button>
+    </div>
+
+    <div class="card">
+      <h2>📋 Vistorias Salvas</h2>
+      <p>Acesse vistorias realizadas no aparelho.</p>
+      <button class="btn btn-secondary">
+        Abrir Vistorias
+      </button>
+    </div>
+
+    <div class="card">
+      <h2>📦 Pacote Regulatório</h2>
+      <p>São Paulo • Versão inicial</p>
+      <span class="status status-ok">SP ATIVO</span>
+    </div>
+
+  </main>
+
+  <footer>
+    Criado por <strong>Jonatan Vale</strong> em parceria com <strong>Vale Produção</strong>
+  </footer>
+
+</body>
+</html>
