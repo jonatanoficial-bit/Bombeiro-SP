@@ -22,7 +22,9 @@
 
   <div class="topbar">
     <div class="topbar-inner">
-      <div class="brand">
+      <a class="navbtn" href="#/home" aria-label="Ir para Home">🏠</a>
+
+      <div class="brand" style="flex:1;">
         <img src="./icon.svg" alt="Ícone Bombeiro SP">
         <div class="brand-title">
           <h1>BOMBEIRO SP</h1>
@@ -39,46 +41,187 @@
 
   <div class="container">
 
-    <section class="hero">
-      <img class="hero-cover" src="./cover.svg" alt="Capa Bombeiro SP">
-      <div class="hero-body">
-        <h2>Vistoria rápida, relatório profissional</h2>
-        <p>
-          Checklists inteligentes para comércio e eventos, com pendências, fotos e geração de PDF técnico
-          (adequações para regularização).
-        </p>
+    <!-- VIEW: HOME -->
+    <section class="view" id="viewHome">
+      <section class="hero">
+        <img class="hero-cover" src="./cover.svg" alt="Capa Bombeiro SP">
+        <div class="hero-body">
+          <h2>Vistoria rápida, relatório profissional</h2>
+          <p>
+            Checklists inteligentes para comércio e eventos, com pendências, fotos e geração de PDF técnico
+            (adequações para regularização).
+          </p>
 
-        <div class="badges">
-          <div class="badge ok"><span class="b-dot"></span>SP ATIVO</div>
-          <div class="badge alerta"><span class="b-dot"></span>USO EM CAMPO</div>
-          <div class="badge"><span class="b-dot"></span>OFFLINE</div>
+          <div class="badges">
+            <div class="badge ok"><span class="b-dot"></span>SP ATIVO</div>
+            <div class="badge alerta"><span class="b-dot"></span>USO EM CAMPO</div>
+            <div class="badge"><span class="b-dot"></span>OFFLINE</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h3>🔥 Nova Vistoria</h3>
+          <p>Crie uma vistoria guiada (comércio ou evento) e salve offline.</p>
+          <button class="btn" id="btnNova">Iniciar Vistoria</button>
+        </div>
+
+        <div class="card">
+          <h3>📋 Vistorias Salvas</h3>
+          <p>Abra e continue vistorias no aparelho, mesmo sem internet.</p>
+          <button class="btn btn-secondary" id="btnSalvas">Abrir Vistorias</button>
+        </div>
+
+        <div class="card">
+          <h3>📦 Pacote Regulatório</h3>
+          <p>Estrutura plugável: SP primeiro, expansão depois sem quebrar código.</p>
+          <button class="btn btn-amber" id="btnPacote">Ver Pacote SP</button>
+        </div>
+      </section>
+
+      <div class="footer">
+        Criado por <strong>Jonatan Vale</strong> em parceria com <strong>Vale Produção</strong>
+      </div>
+    </section>
+
+    <!-- VIEW: NOVA VISTORIA -->
+    <section class="view" id="viewNova">
+      <div class="page-title">Nova Vistoria</div>
+
+      <form class="form" id="formNova" autocomplete="off">
+        <div class="field">
+          <div class="label">
+            <span>Tipo de local</span>
+            <span class="hint">Comércio ou Evento</span>
+          </div>
+          <select class="select" id="tipoLocal" required>
+            <option value="" selected disabled>Selecione…</option>
+            <option value="comercio">Comércio (lojas, mercados, restaurantes, etc.)</option>
+            <option value="evento">Evento (temporário: shows, feiras, etc.)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <div class="label">
+            <span>Nome do local</span>
+            <span class="hint">Ex.: Supermercado X</span>
+          </div>
+          <input class="input" id="nomeLocal" placeholder="Digite o nome do local" required />
+        </div>
+
+        <div class="field">
+          <div class="label">
+            <span>Endereço</span>
+            <span class="hint">Rua, nº, bairro, cidade</span>
+          </div>
+          <textarea class="textarea" id="endereco" placeholder="Digite o endereço completo" required></textarea>
+        </div>
+
+        <div class="split">
+          <div class="field">
+            <div class="label">
+              <span>Área (m²)</span>
+              <span class="hint">Somar áreas</span>
+            </div>
+            <input class="input" id="area" inputmode="decimal" placeholder="Ex.: 250" required />
+          </div>
+
+          <div class="field">
+            <div class="label">
+              <span>Pavimentos</span>
+              <span class="hint">Ex.: 1, 2, 3…</span>
+            </div>
+            <input class="input" id="pavimentos" inputmode="numeric" placeholder="Ex.: 1" required />
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="field">
+            <div class="label">
+              <span>Altura (m)</span>
+              <span class="hint">Aproximada</span>
+            </div>
+            <input class="input" id="altura" inputmode="decimal" placeholder="Ex.: 6" />
+          </div>
+
+          <div class="field">
+            <div class="label">
+              <span>Lotação</span>
+              <span class="hint">Estimativa</span>
+            </div>
+            <input class="input" id="lotacao" inputmode="numeric" placeholder="Ex.: 120" />
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="label">
+            <span>Riscos e características</span>
+            <span class="hint">Marque o que existir</span>
+          </div>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" value="glp" class="risco"> GLP</label>
+            <label class="chip"><input type="checkbox" value="cozinha" class="risco"> Cozinha/óleo</label>
+            <label class="chip"><input type="checkbox" value="inflamaveis" class="risco"> Inflamáveis</label>
+            <label class="chip"><input type="checkbox" value="subsolo" class="risco"> Subsolo</label>
+            <label class="chip"><input type="checkbox" value="mezanino" class="risco"> Mezanino</label>
+            <label class="chip"><input type="checkbox" value="deposito" class="risco"> Depósito</label>
+            <label class="chip"><input type="checkbox" value="palco" class="risco"> Palco/Estrutura</label>
+            <label class="chip"><input type="checkbox" value="som_luz" class="risco"> Som/Luz (evento)</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="label">
+            <span>Observações iniciais</span>
+            <span class="hint">Opcional</span>
+          </div>
+          <textarea class="textarea" id="obs" placeholder="Ex.: local em reforma, rota bloqueada, etc."></textarea>
+        </div>
+
+        <div class="row">
+          <button type="button" class="btn btn-secondary" id="btnCancelarNova">Cancelar</button>
+          <button type="submit" class="btn" id="btnSalvarNova">Salvar vistoria</button>
+        </div>
+
+        <div class="card">
+          <h3>➡️ Próximo passo</h3>
+          <p>
+            Após salvar, a próxima tela será o <strong>Checklist Inteligente</strong> (extintores, sinalização,
+            rotas, brigada, etc.).
+          </p>
+          <button type="button" class="btn btn-amber" id="btnIrChecklist" disabled>
+            Ir para Checklist (em seguida)
+          </button>
+        </div>
+
+      </form>
+
+      <div class="footer">
+        Criado por <strong>Jonatan Vale</strong> em parceria com <strong>Vale Produção</strong>
+      </div>
+    </section>
+
+    <!-- VIEW: SALVAS -->
+    <section class="view" id="viewSalvas">
+      <div class="page-title">Vistorias Salvas</div>
+
+      <div class="card">
+        <h3>📋 Lista offline</h3>
+        <p>Estas vistorias ficam salvas no seu aparelho (IndexedDB).</p>
+        <div class="row">
+          <button class="btn btn-secondary" id="btnVoltarHome">Voltar</button>
+          <button class="btn" id="btnRecarregarLista">Recarregar</button>
         </div>
       </div>
-    </section>
 
-    <section class="grid">
-      <div class="card">
-        <h3>🔥 Nova Vistoria</h3>
-        <p>Inicie uma inspeção completa com checklist técnico guiado para comércio e eventos.</p>
-        <button class="btn" id="btnNova">Iniciar Vistoria</button>
-      </div>
+      <div class="list" id="listaVistorias"></div>
 
-      <div class="card">
-        <h3>📋 Vistorias Salvas</h3>
-        <p>Acesse e continue vistorias no aparelho, mesmo sem internet.</p>
-        <button class="btn btn-secondary" id="btnSalvas">Abrir Vistorias</button>
-      </div>
-
-      <div class="card">
-        <h3>📦 Pacote Regulatório</h3>
-        <p>Estrutura preparada para atualizar regras por pacote (SP primeiro, expansão depois).</p>
-        <button class="btn btn-amber" id="btnPacote">Ver Pacote SP</button>
+      <div class="footer">
+        Criado por <strong>Jonatan Vale</strong> em parceria com <strong>Vale Produção</strong>
       </div>
     </section>
 
-    <div class="footer">
-      Criado por <strong>Jonatan Vale</strong> em parceria com <strong>Vale Produção</strong>
-    </div>
   </div>
 
   <!-- Toast -->
@@ -87,6 +230,6 @@
     <span id="toastText">Ok</span>
   </div>
 
-  <script src="./app.js"></script>
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
